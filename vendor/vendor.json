@@ -127,6 +127,12 @@
 			"revisionTime": "2019-05-18T18:08:52Z"
 		},
 		{
+			"checksumSHA1": "vm7jiY0BIHk+YtfjoHKY+Vd/kCU=",
+			"path": "github.com/krakenlab/ternary",
+			"revision": "ca548fdf1c0dc0aa5f10a5080456dd2f6c1041fe",
+			"revisionTime": "2019-05-23T13:55:10Z"
+		},
+		{
 			"checksumSHA1": "OBxx2YLHHcK3qJNADNLQs0tY8vc=",
 			"path": "github.com/lib/pq",
 			"revision": "3427c32cb71afc948325f299f040e53c1dd78979",
