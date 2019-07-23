@@ -9,6 +9,11 @@ import (
 // MsSQLConnector implements Connector interface
 type MsSQLConnector struct{}
 
+// NewMsSQLConnector construct a connector for MsSQL
+func NewMsSQLConnector() Connector {
+	return &MsSQLConnector{}
+}
+
 // Variables return variables from env
 func (connector *MsSQLConnector) Variables() map[string]string {
 	return make(map[string]string)
