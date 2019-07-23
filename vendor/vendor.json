@@ -13,6 +13,12 @@
 			"revisionTime": "2019-07-18T21:23:40Z"
 		},
 		{
+			"checksumSHA1": "CSPbwbyzqA6sfORicn4HFtIhF/c=",
+			"path": "github.com/davecgh/go-spew/spew",
+			"revision": "d8f796af33cc11cb798c1aaeb27a4ebc5099927d",
+			"revisionTime": "2018-08-30T19:11:22Z"
+		},
+		{
 			"checksumSHA1": "lf4CrLxZdQRw49ul2TKFX+5f94g=",
 			"path": "github.com/denisenkom/go-mssqldb",
 			"revision": "e11dd26d3a7a1e7ae4ee26ae781ce10132fa71f3",
@@ -115,6 +121,12 @@
 			"revisionTime": "2019-06-21T16:12:01Z"
 		},
 		{
+			"checksumSHA1": "Vru9FM9G8dT3nvZGvhfkEqkApNM=",
+			"path": "github.com/krakenlab/gspec",
+			"revision": "40a59e718d9feecd0bc80b3e625053ee1f8ba1c3",
+			"revisionTime": "2019-05-18T18:08:52Z"
+		},
+		{
 			"checksumSHA1": "OBxx2YLHHcK3qJNADNLQs0tY8vc=",
 			"path": "github.com/lib/pq",
 			"revision": "3427c32cb71afc948325f299f040e53c1dd78979",
@@ -161,6 +173,30 @@
 			"path": "github.com/modern-go/reflect2",
 			"revision": "94122c33edd36123c84d5368cfb2b69df93a0ec8",
 			"revisionTime": "2018-07-18T01:23:57Z"
+		},
+		{
+			"checksumSHA1": "LuFv4/jlrmFNnDb/5SCSEPAM9vU=",
+			"path": "github.com/pmezard/go-difflib/difflib",
+			"revision": "5d4384ee4fb2527b0a1256a821ebfc92f91efefc",
+			"revisionTime": "2018-12-26T10:54:42Z"
+		},
+		{
+			"checksumSHA1": "/7bZ0f2fM9AAsLf3nMca6Gtlm6E=",
+			"path": "github.com/stretchr/testify/assert",
+			"revision": "221dbe5ed46703ee255b1da0dec05086f5035f62",
+			"revisionTime": "2019-05-17T17:51:56Z"
+		},
+		{
+			"checksumSHA1": "ABkrw83kq3/d6oSRX+BFq57/BiY=",
+			"path": "github.com/stretchr/testify/require",
+			"revision": "221dbe5ed46703ee255b1da0dec05086f5035f62",
+			"revisionTime": "2019-05-17T17:51:56Z"
+		},
+		{
+			"checksumSHA1": "lIp4dQzfVYRQARgsmRm3h3wRFgs=",
+			"path": "github.com/stretchr/testify/suite",
+			"revision": "221dbe5ed46703ee255b1da0dec05086f5035f62",
+			"revisionTime": "2019-05-17T17:51:56Z"
 		},
 		{
 			"checksumSHA1": "uFz2Xig8LWOZ4dhBAzi6YD3AEcU=",
