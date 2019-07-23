@@ -9,6 +9,11 @@ import (
 // Sqlite3Connector implements Connector interface
 type Sqlite3Connector struct{}
 
+// NewSqlite3Connector construct a connector for Sqlite3
+func NewSqlite3Connector() Connector {
+	return &Sqlite3Connector{}
+}
+
 // Variables return variables from env
 func (connector *Sqlite3Connector) Variables() map[string]string {
 	return make(map[string]string)
