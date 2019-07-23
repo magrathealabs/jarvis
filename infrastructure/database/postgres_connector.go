@@ -9,6 +9,11 @@ import (
 // PostgresConnector implements Connector interface
 type PostgresConnector struct{}
 
+// NewPostgresConnector construct a connector for Postgres
+func NewPostgresConnector() Connector {
+	return &PostgresConnector{}
+}
+
 // Variables return variables from env
 func (connector *PostgresConnector) Variables() map[string]string {
 	return make(map[string]string)
