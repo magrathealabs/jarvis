@@ -39,10 +39,52 @@
 			"revisionTime": "2019-07-01T18:22:01Z"
 		},
 		{
+			"checksumSHA1": "YzIVWHj5vDlCp3A8Zy0vhCn4zZ0=",
+			"path": "github.com/jinzhu/gorm",
+			"revision": "836fb2c19d84dac7b0272958dfb9af7cf0d0ade4",
+			"revisionTime": "2019-06-30T07:50:19Z"
+		},
+		{
+			"checksumSHA1": "0Pry12nZ6UQBd1iXEtszySSfFpI=",
+			"path": "github.com/jinzhu/gorm/dialects/postgres",
+			"revision": "836fb2c19d84dac7b0272958dfb9af7cf0d0ade4",
+			"revisionTime": "2019-06-30T07:50:19Z"
+		},
+		{
+			"checksumSHA1": "iqeSAF7imnVsW+iqLqf6kkYn1VU=",
+			"path": "github.com/jinzhu/inflection",
+			"revision": "f5c5f50e6090ae76a29240b61ae2a90dd810112e",
+			"revisionTime": "2019-06-03T04:28:36Z"
+		},
+		{
 			"checksumSHA1": "4DgEcOv2o9NyZAHCbdS76mToqpU=",
 			"path": "github.com/json-iterator/go",
 			"revision": "27518f6661eba504be5a7a9a9f6d9460d892ade3",
 			"revisionTime": "2019-06-21T16:12:01Z"
+		},
+		{
+			"checksumSHA1": "OBxx2YLHHcK3qJNADNLQs0tY8vc=",
+			"path": "github.com/lib/pq",
+			"revision": "3427c32cb71afc948325f299f040e53c1dd78979",
+			"revisionTime": "2019-07-16T17:26:55Z"
+		},
+		{
+			"checksumSHA1": "EnMmNGgpDa5sNw0Zs5RhvNDcP2g=",
+			"path": "github.com/lib/pq/hstore",
+			"revision": "3427c32cb71afc948325f299f040e53c1dd78979",
+			"revisionTime": "2019-07-16T17:26:55Z"
+		},
+		{
+			"checksumSHA1": "AU3fA8Sm33Vj9PBoRPSeYfxLRuE=",
+			"path": "github.com/lib/pq/oid",
+			"revision": "3427c32cb71afc948325f299f040e53c1dd78979",
+			"revisionTime": "2019-07-16T17:26:55Z"
+		},
+		{
+			"checksumSHA1": "3OonTK1mBkRfbFsQPuSLcACph7I=",
+			"path": "github.com/lib/pq/scram",
+			"revision": "3427c32cb71afc948325f299f040e53c1dd78979",
+			"revisionTime": "2019-07-16T17:26:55Z"
 		},
 		{
 			"checksumSHA1": "74gCzvJiE6bXX3i4vIVCYhffDHc=",
