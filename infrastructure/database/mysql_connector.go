@@ -9,6 +9,11 @@ import (
 // MySQLConnector implements Connector interface
 type MySQLConnector struct{}
 
+// NewMySQLConnector construct a connector for MySQL
+func NewMySQLConnector() Connector {
+	return &MySQLConnector{}
+}
+
 // Variables return variables from env
 func (connector *MySQLConnector) Variables() map[string]string {
 	return make(map[string]string)
