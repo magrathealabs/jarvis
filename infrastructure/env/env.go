@@ -6,15 +6,22 @@ import (
 	"github.com/krakenlab/ternary"
 )
 
-// Env base structure
-type Env struct{}
-
-// New env object
-func New() *Env {
-	return &Env{}
+// Env based in key. First OS Values.
+func Env(key string, defaults ...string) string {
+	value := os.Getenv(key)
+	return ternary.String(isBlank(value), firstValidDefault(defaults), value)
 }
 
-func (env *Env) Read(key string, def string) string {
-	res := os.Getenv(key)
-	return ternary.String(res == "", def, res)
+func isBlank(value string) bool {
+	return value == ""
+}
+
+func firstValidDefault(defaults []string) string {
+	for _, def := range defaults {
+		if !isBlank(def) {
+			return def
+		}
+	}
+
+	return ""
 }
