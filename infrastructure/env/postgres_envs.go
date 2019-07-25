@@ -30,5 +30,10 @@ func (env *PostgresEnvs) Dbname() string {
 
 // Pass env
 func (env *PostgresEnvs) Pass() string {
-	return Env("POSTGRES_PASS", "")
+	return Env("POSTGRES_PASS", "postgres")
+}
+
+// SSLMode env
+func (env *PostgresEnvs) SSLMode() string {
+	return Env("POSTGRES_SSLMODE", "disable")
 }

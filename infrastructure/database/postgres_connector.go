@@ -12,32 +12,35 @@ import (
 
 // PostgresConnector implements Connector interface
 type PostgresConnector struct {
-	Host   string
-	Port   string
-	User   string
-	Dbname string
-	Pass   string
+	Host    string
+	Port    string
+	User    string
+	Dbname  string
+	Pass    string
+	SSLMode string
 }
 
 // NewPostgresConnector construct a connector for Postgres
 func NewPostgresConnector() Connector {
 	return &PostgresConnector{
-		Host:   env.Postgres().Host(),
-		Port:   env.Postgres().Port(),
-		User:   env.Postgres().User(),
-		Dbname: env.Postgres().Dbname(),
-		Pass:   env.Postgres().Pass(),
+		Host:    env.Postgres().Host(),
+		Port:    env.Postgres().Port(),
+		User:    env.Postgres().User(),
+		Dbname:  env.Postgres().Dbname(),
+		Pass:    env.Postgres().Pass(),
+		SSLMode: env.Postgres().SSLMode(),
 	}
 }
 
 // Variables return variables from env
 func (connector *PostgresConnector) Variables() map[string]string {
 	return map[string]string{
-		"Host":   connector.Host,
-		"Port":   connector.Port,
-		"User":   connector.User,
-		"Dbname": connector.Dbname,
-		"Pass":   connector.Pass,
+		"Host":    connector.Host,
+		"Port":    connector.Port,
+		"User":    connector.User,
+		"Dbname":  connector.Dbname,
+		"Pass":    connector.Pass,
+		"SSLMode": connector.SSLMode,
 	}
 }
 
@@ -54,11 +57,12 @@ func (connector *PostgresConnector) Service() string {
 // Args to create this connection
 func (connector *PostgresConnector) Args() string {
 	return fmt.Sprintf(
-		"host=%s port=%s user=%s dbname=%s password=%s",
+		"host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
 		connector.Host,
 		connector.Port,
 		connector.User,
 		connector.Dbname,
 		connector.Pass,
+		connector.SSLMode,
 	)
 }
