@@ -2,7 +2,19 @@
 
 Apenas um sistema bastante inteligente para controlar o nosso dia-a-dia de trabalho físico e remoto.
 
-## Setup
+## Configuração
+
+Banco de Dados:
+```sh
+    # Postgres engine
+    $POSTGRES_HOST=localhost
+    $POSTGRES_USER=postgres
+    $POSTGRES_PASS=postgres
+    $POSTGRES_DBNAME=test
+    $POSTGRES_PORT=5432
+```
+
+## Dev
 
 Golang 1.12:
 
@@ -22,14 +34,12 @@ GOPATH:
     git clone git@github.com:magrathealabs/jarvis.git
 ```
 
-## Dependências
+### Dependências
 
 Utilizamos o Govendor:
 
 ```sh
     go get -u github.com/kardianos/govendor
-    
-    # govendor fetch github.com/blabla/blablabla
 ```
 
 Golint-CI:
@@ -39,7 +49,7 @@ Golint-CI:
     golangci-lint run
 ```
 
-## Deploy
+### Deploy
 
 ```sh
     make deploy

@@ -11,3 +11,13 @@ services:
     environment:
       - WEB_INTERFACE=0.0.0.0
       - WEB_PORT=3000
+
+  postgres:
+    image: postgres:11.4
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=jarvis
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=
+      - TZ=GMT

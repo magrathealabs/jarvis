@@ -14,6 +14,26 @@ func (suite *PostgresConnectorSuite) TestNewPostgresConnector() {
 	suite.NotNil(NewPostgresConnector())
 }
 
+func (suite *PostgresConnectorSuite) TestVariables() {
+	expected := map[string]string{
+		"Host":    "localhost",
+		"Port":    "5432",
+		"User":    "postgres",
+		"Pass":    "postgres",
+		"Dbname":  "test",
+		"SSLMode": "disable",
+	}
+
+	suite.Equal(expected, NewPostgresConnector().Variables())
+}
+
+func (suite *PostgresConnectorSuite) TestConnect() {
+	conn, err := NewPostgresConnector().Connect()
+
+	suite.NotNil(conn)
+	suite.NoError(err)
+}
+
 func (suite *PostgresConnectorSuite) TestService() {
 	connector := NewPostgresConnector()
 
@@ -22,9 +42,12 @@ func (suite *PostgresConnectorSuite) TestService() {
 }
 
 func (suite *PostgresConnectorSuite) TestArgs() {
-	connector := NewPostgresConnector()
+	expected := "host=localhost port=5432 user=postgres dbname=test password=postgres sslmode=disable"
 
-	suite.NotEmpty(connector.Args())
+	suite.Equal(
+		expected,
+		NewPostgresConnector().Args(),
+	)
 }
 
 func TestPostgresConnectorSuite(t *testing.T) {

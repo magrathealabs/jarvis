@@ -13,3 +13,8 @@ type Connector interface {
 	Service() string
 	Args() string
 }
+
+// NewConnector constructor
+func NewConnector() Connector {
+	return NewPostgresConnector()
+}
