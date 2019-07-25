@@ -1,17 +1,33 @@
 package database
 
 import (
+	"fmt"
+
 	"github.com/jinzhu/gorm"
 	// Gorm dialect
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+
+	"github.com/magrathealabs/jarvis/infrastructure/env"
 )
 
 // PostgresConnector implements Connector interface
-type PostgresConnector struct{}
+type PostgresConnector struct {
+	Host   string
+	Port   string
+	User   string
+	Dbname string
+	Pass   string
+}
 
 // NewPostgresConnector construct a connector for Postgres
 func NewPostgresConnector() Connector {
-	return &PostgresConnector{}
+	return &PostgresConnector{
+		Host:   env.Postgres().Host(),
+		Port:   env.Postgres().Port(),
+		User:   env.Postgres().User(),
+		Dbname: env.Postgres().Dbname(),
+		Pass:   env.Postgres().Pass(),
+	}
 }
 
 // Variables return variables from env
@@ -31,5 +47,12 @@ func (connector *PostgresConnector) Service() string {
 
 // Args to create this connection
 func (connector *PostgresConnector) Args() string {
-	return "host=myhost port=myport user=gorm dbname=gorm password=mypassword"
+	return fmt.Sprintf(
+		"host=%s port=%s user=%s dbname=%s password=%s",
+		connector.Host,
+		connector.Port,
+		connector.User,
+		connector.Dbname,
+		connector.Pass,
+	)
 }
