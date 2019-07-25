@@ -12,8 +12,3 @@ func Database() *DatabaseEnvs {
 func (env *DatabaseEnvs) Engine() string {
 	return Env("DB_ENGINE")
 }
-
-// PostgresHost env
-func (env *DatabaseEnvs) PostgresHost() string {
-	return Env("DB_POSTGRES_HOST", "localhost")
-}
