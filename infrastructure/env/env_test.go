@@ -12,12 +12,14 @@ type EnvFuncSuite struct {
 
 func (suite *EnvFuncSuite) TestEnvFunc() {
 	gopath := Env("GOPATH", "err")
-	otherEnv := Env("NOT GOPATH", "ok")
+	otherEnv := Env("NOT GOPATH", "", "ok")
+	failEnv := Env("NOT GOPATH", "", "")
 
 	suite.NotEmpty(gopath)
 	suite.NotEmpty(otherEnv)
 	suite.NotEqual("err", gopath)
 	suite.Equal("ok", otherEnv)
+	suite.Equal("", failEnv)
 }
 
 func TestEnvFuncSuite(t *testing.T) {
