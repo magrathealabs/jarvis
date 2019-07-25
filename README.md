@@ -1,3 +1,6 @@
+[![Coverage Status](https://coveralls.io/repos/github/magrathealabs/jarvis/badge.svg)](https://coveralls.io/github/magrathealabs/jarvis)
+[![Build Status](https://travis-ci.org/magrathealabs/jarvis.svg?branch=master)](https://travis-ci.org/magrathealabs/jarvis)
+
 # Jarvis :robot:
 
 Apenas um sistema bastante inteligente para controlar o nosso dia-a-dia de trabalho físico e remoto.

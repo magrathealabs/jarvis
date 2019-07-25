@@ -5,7 +5,7 @@ build:
 	docker-compose build
 
 dev: build
-	docker-compose up -d postgres
+	docker-compose up -d postgres rabbitmq
 
 stop:
 	docker-compose down
