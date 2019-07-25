@@ -4,13 +4,24 @@ services:
   jarvis:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: jarvis.Dockerfile
     command: jarvis
     ports:
       - 3000:3000
     environment:
       - WEB_INTERFACE=0.0.0.0
       - WEB_PORT=3000
+
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: rabbitmq.Dockerfile
+    ports:
+      - 15672:15672
+      - 1883:1883
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
 
   postgres:
     image: postgres:11.4
