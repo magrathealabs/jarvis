@@ -6,12 +6,9 @@ Apenas um sistema bastante inteligente para controlar o nosso dia-a-dia de traba
 
 Banco de Dados:
 ```sh
-    # Engine
-    $DB_ENGINE=postgres|mysql|mssql|sqlite3
-
     # Postgres engine
     $POSTGRES_HOST=localhost
-    $POSTGRES_USER=posrgres
+    $POSTGRES_USER=postgres
     $POSTGRES_PASS=postgres
     $POSTGRES_DBNAME=test
     $POSTGRES_PORT=5432

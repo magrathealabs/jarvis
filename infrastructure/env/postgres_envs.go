@@ -30,5 +30,5 @@ func (env *PostgresEnvs) Dbname() string {
 
 // Pass env
 func (env *PostgresEnvs) Pass() string {
-	return Env("POSTGRES_PASS", "postgres")
+	return Env("POSTGRES_PASS", "")
 }

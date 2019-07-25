@@ -23,7 +23,7 @@ func (suite *PostgresEnvsTest) TestDbname() {
 	suite.Equal("test", Postgres().Dbname())
 }
 func (suite *PostgresEnvsTest) TestPass() {
-	suite.Equal("postgres", Postgres().Pass())
+	suite.Equal("", Postgres().Pass())
 }
 
 func TestPostgresEnvsTest(t *testing.T) {
