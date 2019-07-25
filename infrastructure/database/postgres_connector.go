@@ -32,7 +32,13 @@ func NewPostgresConnector() Connector {
 
 // Variables return variables from env
 func (connector *PostgresConnector) Variables() map[string]string {
-	return make(map[string]string)
+	return map[string]string{
+		"Host":   connector.Host,
+		"Port":   connector.Port,
+		"User":   connector.User,
+		"Dbname": connector.Dbname,
+		"Pass":   connector.Pass,
+	}
 }
 
 // Connect to Postgres
