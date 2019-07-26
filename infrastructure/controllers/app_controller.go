@@ -1,13 +1,18 @@
 package controllers
 
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/magrathealabs/jarvis/infrastructure/routes"
+)
+
 // AppController is a generic controller to setup routes
 type AppController struct {
-	RootController *RootController
+	Server *gin.Engine
 }
 
 // NewAppController costructor
 func NewAppController() *AppController {
-	app := &AppController{}
+	app := &AppController{Server: gin.Default()}
 	app.Routes()
 
 	return app
@@ -15,5 +20,13 @@ func NewAppController() *AppController {
 
 // Routes setup all handlers
 func (controller *AppController) Routes() {
-	controller.RootController = NewRootController(controller)
+	controller.Server.GET(routes.Root, controller.Index)
+}
+
+// Index GET /
+func (controller *AppController) Index(c *gin.Context) {
+	c.JSON(
+		200,
+		"hello jarvis",
+	)
 }
