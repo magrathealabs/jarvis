@@ -1,25 +1,19 @@
 package controllers
 
-import "github.com/magrathealabs/jarvis/infrastructure/web"
-
 // AppController is a generic controller to setup routes
 type AppController struct {
-	Engine *web.Engine
-
 	RootController *RootController
 }
 
 // NewAppController costructor
 func NewAppController() *AppController {
-	engine := web.New()
-	engine.Setup()
+	app := &AppController{}
+	app.Routes()
 
-	return &AppController{Engine: engine}
+	return app
 }
 
-// Setup instance all sub controllers
-func (controller *AppController) Setup() {
+// Routes setup all handlers
+func (controller *AppController) Routes() {
 	controller.RootController = NewRootController(controller)
-
-	defer controller.RootController.Setup()
 }
