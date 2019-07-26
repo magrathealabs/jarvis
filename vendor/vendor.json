@@ -127,6 +127,12 @@
 			"revisionTime": "2019-05-18T18:08:52Z"
 		},
 		{
+			"checksumSHA1": "B7rAj1VB3EXtLNcvUwOgZsJw0WY=",
+			"path": "github.com/krakenlab/gspec/websuite",
+			"revision": "40a59e718d9feecd0bc80b3e625053ee1f8ba1c3",
+			"revisionTime": "2019-05-18T18:08:52Z"
+		},
+		{
 			"checksumSHA1": "vm7jiY0BIHk+YtfjoHKY+Vd/kCU=",
 			"path": "github.com/krakenlab/ternary",
 			"revision": "ca548fdf1c0dc0aa5f10a5080456dd2f6c1041fe",
