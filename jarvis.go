@@ -1,7 +1,8 @@
 package main
 
-import "github.com/magrathealabs/jarvis/domain"
+import "github.com/magrathealabs/jarvis/infrastructure/controllers"
 
 func main() {
-	panic(domain.ErrNotImplemented)
+	err := controllers.NewAppController().Engine.Run()
+	panic(err)
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"testing"
 
 	"github.com/krakenlab/gspec"
@@ -11,6 +12,9 @@ type JarvisSuite struct {
 }
 
 func (suite *JarvisSuite) TestMain() {
+	os.Setenv("WEB_PORT", "-1")
+	os.Setenv("WEB_INTERFACE", "localhost")
+
 	suite.Panics(main)
 }
 
