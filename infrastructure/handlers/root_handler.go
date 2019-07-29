@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/magrathealabs/jarvis/infrastructure/routes"
 )
 
 // RootHandler struct
@@ -16,7 +17,7 @@ func NewRootHandler() Handler {
 
 // SetupRoutes on gin
 func (handler *RootHandler) SetupRoutes(engine *gin.Engine) {
-	engine.GET("/", handler.Index)
+	engine.GET(routes.Root, handler.Index)
 }
 
 // Index over / path

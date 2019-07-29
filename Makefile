@@ -10,10 +10,11 @@ dev: build
 stop:
 	docker-compose down
 
-test: dev migrate
+test: stop dev migrate
 	go test ./...
 
 migrate:
+	sleep 5
 	docker-compose exec postgres psql -U postgres -c "create database test"
 	docker-compose exec postgres psql -U postgres -c "create database development"
 	docker-compose exec postgres psql -U postgres -c "create database production"
