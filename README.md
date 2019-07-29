@@ -7,6 +7,13 @@ Apenas um sistema bastante inteligente para controlar o nosso dia-a-dia de traba
 
 ## Configuração
 
+Servidor WEB:
+```sh
+    # Postgres engine
+    $WEB_HOST=0.0.0.0
+    $WEB_PORT=3000
+```
+
 Banco de Dados:
 ```sh
     # Postgres engine
