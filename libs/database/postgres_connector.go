@@ -7,7 +7,7 @@ import (
 	// Gorm dialect
 	_ "github.com/jinzhu/gorm/dialects/postgres"
 
-	"github.com/magrathealabs/jarvis/infrastructure/env"
+	"github.com/magrathealabs/jarvis/libs/env"
 )
 
 // PostgresConnector implements Connector interface
