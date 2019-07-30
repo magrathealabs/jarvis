@@ -5,13 +5,14 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/magrathealabs/jarvis/infrastructure/routes"
+	"github.com/magrathealabs/jarvis/libs/handler"
 )
 
 // RootHandler struct
 type RootHandler struct{}
 
 // NewRootHandler constructor
-func NewRootHandler() Handler {
+func NewRootHandler() handler.Handler {
 	return &RootHandler{}
 }
 

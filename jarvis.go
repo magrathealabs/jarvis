@@ -4,10 +4,11 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/magrathealabs/jarvis/infrastructure/handlers"
 	"github.com/magrathealabs/jarvis/libs/env"
+	"github.com/magrathealabs/jarvis/libs/handler"
 )
 
-func usedHandlers() []handlers.Handler {
-	return []handlers.Handler{
+func usedHandlers() []handler.Handler {
+	return []handler.Handler{
 		handlers.NewRootHandler(),
 	}
 }
