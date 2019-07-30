@@ -30,6 +30,17 @@ func (suite *EndPointResponseTimeSuite) TestToJSON() {
 	suite.Contains(json, "testing")
 }
 
+func (suite *EndPointResponseTimeSuite) TestMetricValue() {
+	endPointresponseTime := NewEndPointResponseTime(0, "/route/api/testing")
+	suite.Equal("0.000000", endPointresponseTime.MetricValue())
+}
+
+func (suite *EndPointResponseTimeSuite) TestMetricTag() {
+	endPointresponseTime := NewEndPointResponseTime(0, "/route/api/testing/")
+	suite.Equal("end_point_response_time.route_api_testing", endPointresponseTime.MetricTag())
+
+}
+
 func TestEndPointResponseTimeSuite(t *testing.T) {
 	gspec.Run(t, new(EndPointResponseTimeSuite))
 }
