@@ -1,7 +1,6 @@
 package datastore
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/krakenlab/ternary"
@@ -37,5 +36,5 @@ func (repository *MetricRepository) InsertTemperature(time *time.Time, temperatu
 
 // InsertEndPointResponseTime into graphite
 func (repository *MetricRepository) InsertEndPointResponseTime(endPointResponseTime *models.EndPointResponseTime) error {
-	return repository.conn.SimpleSend(fmt.Sprintf("end_point_response_time.%s", endPointResponseTime.Route), fmt.Sprintf("%f", endPointResponseTime.Value))
+	return repository.conn.SimpleSend(endPointResponseTime.MetricValue(), endPointResponseTime.MetricTag())
 }
