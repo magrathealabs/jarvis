@@ -36,5 +36,5 @@ func (repository *MetricRepository) InsertTemperature(time *time.Time, temperatu
 
 // InsertEndPointResponseTime into graphite
 func (repository *MetricRepository) InsertEndPointResponseTime(endPointResponseTime *models.EndPointResponseTime) error {
-	return repository.conn.SimpleSend(endPointResponseTime.MetricValue(), endPointResponseTime.MetricTag())
+	return repository.conn.SimpleSend(endPointResponseTime.MetricTag(), endPointResponseTime.MetricValue())
 }

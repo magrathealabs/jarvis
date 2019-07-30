@@ -13,11 +13,11 @@ type EndPointResponseTime struct {
 	Base
 
 	Route string  `json:"route"`
-	Value float32 `json:"value"`
+	Value float64 `json:"value"`
 }
 
 // NewEndPointResponseTime constructor
-func NewEndPointResponseTime(value float32, route string) *EndPointResponseTime {
+func NewEndPointResponseTime(value float64, route string) *EndPointResponseTime {
 	return &EndPointResponseTime{Value: value, Route: route}
 }
 
