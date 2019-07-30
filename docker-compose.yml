@@ -22,6 +22,8 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=rabbitmq
       - RABBITMQ_DEFAULT_PASS=rabbitmq
+    logging:
+      driver: none
 
   postgres:
     image: postgres:11.4
@@ -32,3 +34,14 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=
       - TZ=GMT
+    logging:
+      driver: none
+
+  graphite:
+    image: graphiteapp/graphite-statsd
+    container_name: graphite
+    ports:
+      - 2003:2003
+    restart: always
+    logging:
+      driver: none

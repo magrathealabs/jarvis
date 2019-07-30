@@ -1,13 +1,13 @@
 language: go
 
 services:
-  - postgresql
-  - redis-server
+  - docker
 
 go:
   - "1.12"
 
 before_script:
+  - make dev
   - psql -c 'create database test;' -U postgres
 
 before_install:

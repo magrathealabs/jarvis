@@ -5,7 +5,7 @@ build:
 	docker-compose build
 
 dev: build
-	docker-compose up -d postgres rabbitmq
+	docker-compose up -d postgres rabbitmq graphite
 
 stop:
 	docker-compose down
