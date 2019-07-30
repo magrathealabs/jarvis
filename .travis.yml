@@ -10,9 +10,7 @@ go:
   - "1.12"
 
 before_script:
-  - make stop_travis_services
-  - make dev
-  - make migrate
+  - make travis
 
 before_install:
   # Docker Compose

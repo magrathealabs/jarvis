@@ -19,7 +19,9 @@ migrate:
 	docker-compose exec postgres psql -U postgres -c "create database development"
 	docker-compose exec postgres psql -U postgres -c "create database production"
 
-stop_travis_services:
+travis: stop_default_services dev migrate
+
+stop_default_services:
 	# Disable services enabled by default
 	# http://docs.travis-ci.com/user/database-setup/#MySQL
 	sudo /etc/init.d/mysql stop
