@@ -10,6 +10,7 @@ go:
   - "1.12"
 
 before_script:
+  - make stop_travis_services
   - make dev
   - psql -c 'create database test;' -U postgres
 
