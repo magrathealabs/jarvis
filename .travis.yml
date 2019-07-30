@@ -3,6 +3,9 @@ language: go
 services:
   - docker
 
+env:
+  - DOCKER_COMPOSE_VERSION=1.22.0
+
 go:
   - "1.12"
 
@@ -11,6 +14,12 @@ before_script:
   - psql -c 'create database test;' -U postgres
 
 before_install:
+  # Docker Compose
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  # Golang env
   - go get github.com/go-playground/overalls
   - go get github.com/mattn/goveralls
   - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
