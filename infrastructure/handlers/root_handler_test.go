@@ -22,11 +22,11 @@ func (suite *RootHandlerSuite) SetupTest() {
 	suite.Engine = gin.Default()
 	suite.Recorder = httptest.NewRecorder()
 
-	NewRootHandler().SetupRoutes(suite.Engine)
+	NewRootHandler(nil).SetupRoutes(suite.Engine)
 }
 
 func (suite *RootHandlerSuite) TestNewRootHandler() {
-	suite.NotNil(NewRootHandler())
+	suite.NotNil(NewRootHandler(nil))
 }
 
 func (suite *RootHandlerSuite) TestIndex() {

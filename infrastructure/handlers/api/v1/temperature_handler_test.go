@@ -22,11 +22,11 @@ func (suite *TemperatureHandlerSuite) SetupTest() {
 	suite.Engine = gin.Default()
 	suite.Recorder = httptest.NewRecorder()
 
-	NewTemperatureHandler().SetupRoutes(suite.Engine)
+	NewTemperatureHandler(nil).SetupRoutes(suite.Engine)
 }
 
 func (suite *TemperatureHandlerSuite) TestNewTemperatureHandler() {
-	suite.NotNil(NewTemperatureHandler())
+	suite.NotNil(NewTemperatureHandler(nil))
 }
 
 func (suite *TemperatureHandlerSuite) TestSetupRoutes() {

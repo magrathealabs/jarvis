@@ -19,11 +19,11 @@ func (suite *APIHandlerSuite) SetupTest() {
 	suite.Engine = gin.Default()
 	suite.Recorder = httptest.NewRecorder()
 
-	NewHandler().SetupRoutes(suite.Engine)
+	NewHandler(nil).SetupRoutes(suite.Engine)
 }
 
 func (suite *APIHandlerSuite) TestNewHandler() {
-	suite.NotNil(NewHandler())
+	suite.NotNil(NewHandler(nil))
 }
 
 func (suite *APIHandlerSuite) TestSetupRoutes() {
