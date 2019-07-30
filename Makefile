@@ -5,7 +5,7 @@ build:
 	docker-compose build
 
 dev: build
-	docker-compose up -d postgres rabbitmq
+	docker-compose up -d postgres rabbitmq graphite
 
 stop:
 	docker-compose down
@@ -18,3 +18,11 @@ migrate:
 	docker-compose exec postgres psql -U postgres -c "create database test"
 	docker-compose exec postgres psql -U postgres -c "create database development"
 	docker-compose exec postgres psql -U postgres -c "create database production"
+
+travis: stop_default_services dev migrate
+
+stop_default_services:
+	# Disable services enabled by default
+	# http://docs.travis-ci.com/user/database-setup/#MySQL
+	sudo /etc/init.d/mysql stop
+	sudo /etc/init.d/postgresql stop
