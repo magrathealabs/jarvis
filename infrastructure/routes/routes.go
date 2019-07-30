@@ -2,5 +2,6 @@ package routes
 
 // Route paths
 var (
-	Root = "/"
+	Root             = "/"
+	APIV1Temperature = "/api/v1/temperature"
 )

@@ -4,21 +4,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/magrathealabs/jarvis/infrastructure/handlers"
 	"github.com/magrathealabs/jarvis/libs/env"
-	"github.com/magrathealabs/jarvis/libs/handler"
 )
-
-func usedHandlers() []handler.Handler {
-	return []handler.Handler{
-		handlers.NewRootHandler(),
-	}
-}
 
 func engine() *gin.Engine {
 	engine := gin.Default()
 
-	for _, handler := range usedHandlers() {
-		handler.SetupRoutes(engine)
-	}
+	handlers.NewRootHandler().SetupRoutes(engine)
 
 	return engine
 }
