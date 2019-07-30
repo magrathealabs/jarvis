@@ -6,6 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/krakenlab/gspec"
+	"github.com/magrathealabs/jarvis/infrastructure/datastore"
 )
 
 type APIHandlerSuite struct {
@@ -19,11 +20,11 @@ func (suite *APIHandlerSuite) SetupTest() {
 	suite.Engine = gin.Default()
 	suite.Recorder = httptest.NewRecorder()
 
-	NewHandler(nil).SetupRoutes(suite.Engine)
+	NewHandler(datastore.NewMetricRepositoryFromEnv()).SetupRoutes(suite.Engine)
 }
 
 func (suite *APIHandlerSuite) TestNewHandler() {
-	suite.NotNil(NewHandler(nil))
+	suite.NotNil(NewHandler(datastore.NewMetricRepositoryFromEnv()))
 }
 
 func (suite *APIHandlerSuite) TestSetupRoutes() {

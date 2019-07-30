@@ -11,6 +11,12 @@ services:
     environment:
       - WEB_INTERFACE=0.0.0.0
       - WEB_PORT=3000
+      - GRAPHITE_HOST=graphite
+      - GRAPHITE_PORT=2003
+    depends_on:
+      - rabbitmq
+      - postgres
+      - graphite
 
   rabbitmq:
     build:
