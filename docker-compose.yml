@@ -18,6 +18,16 @@ services:
       - postgres
       - graphite
 
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3001:3000
+    volumes:
+      - grafana-volume
+    logging:
+      driver: none
+
   rabbitmq:
     build:
       context: .
@@ -48,6 +58,11 @@ services:
     container_name: graphite
     ports:
       - 2003:2003
+      - 8080:8080
     restart: always
     logging:
       driver: none
+
+volumes:
+  grafana-volume:
+    external: true
