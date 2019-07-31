@@ -5,7 +5,7 @@
 
 Apenas um sistema bastante inteligente para controlar o nosso dia-a-dia de trabalho físico e remoto.
 
-## Configuração
+## Variáveis de Ambiente - Jarvis
 
 Servidor WEB:
 ```sh
@@ -27,6 +27,13 @@ Graphite:
     $METRIC_HOST=localhost
     $METRIC_PORT=2003
 ```
+
+## Serviços Externos
+
+ - Postgres: Banco de Dados para dados consistêntes do Jarvis
+ - Graphite: Banco de Dados para métricas do Jarvis
+   - Grafana: Usado para visualização do Grafite (Não necessário)
+ - RabbitMQ: Fila para requisições `mqtt` dos serviços de IOT.
 
 ## Dev
 
