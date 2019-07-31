@@ -11,7 +11,7 @@ type TimeValidatorSuite struct {
 	gspec.Suite
 }
 
-func (suite *TimeValidatorSuite) TestNewTemperature() {
+func (suite *TimeValidatorSuite) TestNewTimeValidator() {
 	suite.NotNil(NewTimeValidator(time.Now()))
 }
 
