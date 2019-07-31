@@ -13,11 +13,29 @@ type Base struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt time.Time  `json:"updated_at"`
 	DeletedAt *time.Time `sql:"index" json:"deleted_at"`
+
+	Errors []error `json:"errors"`
 }
 
 // NewBase constructor
 func NewBase() *Base {
 	return &Base{}
+}
+
+// AppendError in model
+func (base *Base) AppendError(errs ...error) {
+	base.Errors = append(base.Errors, errs...)
+}
+
+// Valid verify errors list
+func (base *Base) Valid() bool {
+	for _, err := range base.Errors {
+		if err != nil {
+			return false
+		}
+	}
+
+	return true
 }
 
 // ToJSON marshal

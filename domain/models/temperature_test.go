@@ -2,6 +2,7 @@ package models
 
 import (
 	"testing"
+	"time"
 
 	"github.com/magrathealabs/jarvis/domain/enums"
 
@@ -39,6 +40,19 @@ func (suite *TemperatureSuite) TestToJSON() {
 
 	temperature.TemperatureScale = enums.FahrenheitTemperaureScale
 	suite.Contains(temperature.ToJSON(), enums.FahrenheitTemperaureScale)
+}
+
+func (suite *TemperatureSuite) TestValid() {
+	temperature := NewTemperature()
+
+	temperature.RecordedAt = time.Now().Add(time.Hour)
+	temperature.RecordedBy = ""
+	temperature.Temperature = -2000
+	temperature.TemperatureScale = enums.TemperatureScale("Miojo scale")
+	temperature.RelativeHumidity = 1.2
+
+	suite.False(temperature.Valid())
+	suite.Equal(5, len(temperature.Errors))
 }
 
 func TestTemperatureSuite(t *testing.T) {
