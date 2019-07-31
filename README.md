@@ -9,14 +9,12 @@ Apenas um sistema bastante inteligente para controlar o nosso dia-a-dia de traba
 
 Servidor WEB:
 ```sh
-    # Postgres engine
     $WEB_HOST=0.0.0.0
     $WEB_PORT=3000
 ```
 
-Banco de Dados:
+Postgres:
 ```sh
-    # Postgres engine
     $POSTGRES_HOST=localhost
     $POSTGRES_USER=postgres
     $POSTGRES_PASS=postgres
@@ -24,7 +22,21 @@ Banco de Dados:
     $POSTGRES_PORT=5432
 ```
 
+Graphite:
+```sh
+    $METRIC_HOST=localhost
+    $METRIC_PORT=2003
+```
+
 ## Dev
+
+Utilizamos Makefile & Docker & Docker-Compose para automatizar o fluxo de trabalho:
+
+```
+ - make up: Executa toda a infraestrutura com o código fonte local para executar o ambiente de dev.
+ - make dev: Sobe somente os serviços de dependência para executar testes unitários no VisualCode.
+ - make test: Executa toda a suite de testes. Utilizamos a infraestrutura Docker para executar os testes.
+```
 
 Golang 1.12:
 
@@ -44,8 +56,6 @@ GOPATH:
     git clone git@github.com:magrathealabs/jarvis.git
 ```
 
-### Dependências
-
 Utilizamos o Govendor:
 
 ```sh
@@ -59,8 +69,3 @@ Golint-CI:
     golangci-lint run
 ```
 
-### Deploy
-
-```sh
-    make deploy
-```
