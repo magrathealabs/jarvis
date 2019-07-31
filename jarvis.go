@@ -11,7 +11,7 @@ import (
 func engine() *gin.Engine {
 	engine := gin.Default()
 	metricRepository := datastore.NewMetricRepositoryFromEnv()
-	engine.Use(middlewares.EndPointResponseTime(metricRepository))
+	engine.Use(middlewares.EndpointRuntime(metricRepository))
 
 	handlers.NewRootHandler(metricRepository).SetupRoutes(engine)
 

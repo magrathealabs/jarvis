@@ -3,8 +3,6 @@ package datastore
 import (
 	"testing"
 
-	"github.com/magrathealabs/jarvis/domain/models"
-
 	"github.com/krakenlab/gspec"
 )
 
@@ -20,9 +18,8 @@ func (suite *MetricRepositorySuite) TestNewMetricRepositoryFromEnv() {
 	suite.NotNil(NewMetricRepositoryFromEnv())
 }
 
-func (suite *MetricRepositorySuite) TestInsertEndPointResponseTime() {
-	metric := models.NewEndPointResponseTime(0.05, "/testing/graphite/endpoints")
-	err := NewMetricRepositoryFromEnv().InsertEndPointResponseTime(metric)
+func (suite *MetricRepositorySuite) TestInsertMetric() {
+	err := NewMetricRepositoryFromEnv().InsertMetric("testin", "0")
 
 	suite.NoError(err)
 }

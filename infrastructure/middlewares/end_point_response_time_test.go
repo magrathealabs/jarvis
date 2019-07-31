@@ -8,15 +8,15 @@ import (
 	"github.com/krakenlab/gspec"
 )
 
-type EndPointResponseTimeSuite struct {
+type EndpointRuntimeSuite struct {
 	gspec.Suite
 }
 
-func (suite *EndPointResponseTimeSuite) TestEndPointResponseTime() {
+func (suite *EndpointRuntimeSuite) TestEndpointRuntime() {
 	repository := datastore.NewMetricRepositoryFromEnv()
-	suite.NotNil(EndPointResponseTime(repository))
+	suite.NotNil(EndpointRuntime(repository))
 }
 
-func TestEndPointResponseTimeSuite(t *testing.T) {
-	gspec.Run(t, new(EndPointResponseTimeSuite))
+func TestEndpointRuntimeSuite(t *testing.T) {
+	gspec.Run(t, new(EndpointRuntimeSuite))
 }

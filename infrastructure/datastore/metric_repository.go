@@ -1,10 +1,7 @@
 package datastore
 
 import (
-	"time"
-
 	"github.com/krakenlab/ternary"
-	"github.com/magrathealabs/jarvis/domain/models"
 	"github.com/magrathealabs/jarvis/domain/repositories"
 	"github.com/magrathealabs/jarvis/libs/env"
 	"github.com/marpaia/graphite-golang"
@@ -29,12 +26,7 @@ func NewMetricRepositoryFromEnv() repositories.MetricRepository {
 	return NewMetricRepository(env.Graphite().Host(), env.Graphite().PortAsInt())
 }
 
-// InsertTemperature into graphite
-func (repository *MetricRepository) InsertTemperature(time *time.Time, temperature *models.Temperature) error {
-	return nil
-}
-
-// InsertEndPointResponseTime into graphite
-func (repository *MetricRepository) InsertEndPointResponseTime(endPointResponseTime *models.EndPointResponseTime) error {
-	return repository.conn.SimpleSend(endPointResponseTime.MetricTag(), endPointResponseTime.MetricValue())
+// InsertMetric into graphite
+func (repository *MetricRepository) InsertMetric(tag string, value string) error {
+	return repository.conn.SimpleSend(tag, value)
 }
