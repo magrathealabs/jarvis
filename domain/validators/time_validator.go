@@ -16,3 +16,8 @@ func NewTimeValidator(time time.Time) *TimeValidator {
 func (validator *TimeValidator) NotInTheFuture() bool {
 	return validator.Field.Before(time.Now())
 }
+
+// InTheFuture verify
+func (validator *TimeValidator) InTheFuture() bool {
+	return !validator.NotInTheFuture()
+}

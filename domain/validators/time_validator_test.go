@@ -20,6 +20,11 @@ func (suite *TimeValidatorSuite) TestNotInTheFuture() {
 	suite.False(NewTimeValidator(time.Now().Add(time.Hour)).NotInTheFuture())
 }
 
+func (suite *TimeValidatorSuite) TestInTheFuture() {
+	suite.False(NewTimeValidator(time.Now()).InTheFuture())
+	suite.True(NewTimeValidator(time.Now().Add(time.Hour)).InTheFuture())
+}
+
 func TestTimeValidatorSuite(t *testing.T) {
 	gspec.Run(t, new(TimeValidatorSuite))
 }
