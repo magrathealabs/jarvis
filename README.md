@@ -32,13 +32,11 @@ Graphite:
 
 Utilizamos Makefile & Docker & Docker-Compose para automatizar o fluxo de trabalho:
 
-```
- - make up: Executa toda a infraestrutura com o código fonte local para executar o ambiente de dev.
- - make dev: Sobe somente os serviços de dependência para executar testes unitários no VisualCode.
- - make test: Executa toda a suite de testes. Utilizamos a infraestrutura Docker para executar os testes.
-```
+ - `make up`: Executa toda a infraestrutura com o código fonte local para executar o ambiente de dev.
+ - `make dev`: Sobe somente os serviços de dependência para executar testes unitários no VisualCode.
+ - `make test`: Executa toda a suite de testes. Utilizamos a infraestrutura Docker para executar os testes.
 
-Golang 1.12:
+O Jarvis está construído sobre o Golang 1.12. Lembre-se que é opcional caso queira somente executar o ambiente `make up`, visto que este executa dentro do docker. Pode instalar da seguinte forma:
 
 ```sh
     bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
@@ -47,7 +45,7 @@ Golang 1.12:
     gvm use go1.12
 ```
 
-GOPATH:
+Caso queira alterar, recomendamos clonar dentro do $GOPATH para a IDE executar testes e obter a tipagem de forma correta:
 
 ```sh
     mkdir -p $GOPATH/src/github.com/magrathealabs/
@@ -56,13 +54,13 @@ GOPATH:
     git clone git@github.com:magrathealabs/jarvis.git
 ```
 
-Utilizamos o Govendor:
+Para atualizar ou obter nvoas dependências, utilizamos o Govendor:
 
 ```sh
     go get -u github.com/kardianos/govendor
 ```
 
-Golint-CI:
+Para verificar a qualidade do código, utilizamos o Golint-CI:
 
 ```sh
     go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
