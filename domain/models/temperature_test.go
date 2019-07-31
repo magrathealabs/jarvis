@@ -25,8 +25,11 @@ func (suite *TemperatureSuite) TestToJSON() {
 	suite.Contains(json, "deleted_at")
 	suite.Contains(json, "updated_at")
 
-	suite.Contains(json, "value")
-	suite.Contains(json, "scale")
+	suite.Contains(json, "temperature")
+	suite.Contains(json, "temperature_scale")
+	suite.Contains(json, "relative_humidity")
+	suite.Contains(json, "recorded_by")
+	suite.Contains(json, "recorded_at")
 
 	suite.Contains(json, "0")
 	suite.Contains(json, enums.CelsiusTemperaureScale)

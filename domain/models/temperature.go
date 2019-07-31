@@ -2,6 +2,7 @@ package models
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/krakenlab/ternary"
 	"github.com/magrathealabs/jarvis/domain/enums"
@@ -11,14 +12,16 @@ import (
 type Temperature struct {
 	Base
 
-	RecordedBy string                 `json:"recorded_by"`
-	Value      float32                `json:"value"`
-	Scale      enums.TemperatureScale `json:"scale"`
+	RecordedBy       string                 `json:"recorded_by"`
+	RecordedAt       time.Time              `json:"recorded_at"`
+	Temperature      float32                `json:"temperature"`
+	TemperatureScale enums.TemperatureScale `json:"temperature_scale"`
+	RelativeHumidity float32                `json:"relative_humidity"`
 }
 
 // NewTemperature constructor
-func NewTemperature(value float32, scale enums.TemperatureScale) *Temperature {
-	return &Temperature{Value: value, Scale: scale}
+func NewTemperature(temperature float32, temperatureScale enums.TemperatureScale) *Temperature {
+	return &Temperature{Temperature: temperature, TemperatureScale: temperatureScale}
 }
 
 // ToJSON marshal
