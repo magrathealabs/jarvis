@@ -8,6 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/krakenlab/gspec"
+	"github.com/magrathealabs/jarvis/infrastructure/datastore"
 	"github.com/magrathealabs/jarvis/infrastructure/routes"
 )
 
@@ -22,11 +23,11 @@ func (suite *TemperatureHandlerSuite) SetupTest() {
 	suite.Engine = gin.Default()
 	suite.Recorder = httptest.NewRecorder()
 
-	NewTemperatureHandler(nil).SetupRoutes(suite.Engine)
+	NewTemperatureHandler(datastore.NewMetricRepositoryFromEnv()).SetupRoutes(suite.Engine)
 }
 
 func (suite *TemperatureHandlerSuite) TestNewTemperatureHandler() {
-	suite.NotNil(NewTemperatureHandler(nil))
+	suite.NotNil(NewTemperatureHandler(datastore.NewMetricRepositoryFromEnv()))
 }
 
 func (suite *TemperatureHandlerSuite) TestSetupRoutes() {

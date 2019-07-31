@@ -11,8 +11,9 @@ import (
 type Temperature struct {
 	Base
 
-	Value float32                `json:"value"`
-	Scale enums.TemperatureScale `json:"scale"`
+	RecordedBy string                 `json:"recorded_by"`
+	Value      float32                `json:"value"`
+	Scale      enums.TemperatureScale `json:"scale"`
 }
 
 // NewTemperature constructor

@@ -11,6 +11,22 @@ services:
     environment:
       - WEB_INTERFACE=0.0.0.0
       - WEB_PORT=3000
+      - GRAPHITE_HOST=graphite
+      - GRAPHITE_PORT=2003
+    depends_on:
+      - rabbitmq
+      - postgres
+      - graphite
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3001:3000
+    volumes:
+      - grafana-volume
+    logging:
+      driver: none
 
   rabbitmq:
     build:
@@ -42,6 +58,11 @@ services:
     container_name: graphite
     ports:
       - 2003:2003
+      - 8080:8080
     restart: always
     logging:
       driver: none
+
+volumes:
+  grafana-volume:
+    external: true

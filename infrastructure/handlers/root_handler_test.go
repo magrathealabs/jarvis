@@ -8,6 +8,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/krakenlab/gspec"
+	"github.com/magrathealabs/jarvis/infrastructure/datastore"
 	"github.com/magrathealabs/jarvis/infrastructure/routes"
 )
 
@@ -22,11 +23,11 @@ func (suite *RootHandlerSuite) SetupTest() {
 	suite.Engine = gin.Default()
 	suite.Recorder = httptest.NewRecorder()
 
-	NewRootHandler(nil).SetupRoutes(suite.Engine)
+	NewRootHandler(datastore.NewMetricRepositoryFromEnv()).SetupRoutes(suite.Engine)
 }
 
 func (suite *RootHandlerSuite) TestNewRootHandler() {
-	suite.NotNil(NewRootHandler(nil))
+	suite.NotNil(NewRootHandler(datastore.NewMetricRepositoryFromEnv()))
 }
 
 func (suite *RootHandlerSuite) TestIndex() {

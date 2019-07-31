@@ -1,8 +1,11 @@
 up: stop build
 	docker-compose up
 
-build:
+build: volumes
 	docker-compose build
+
+volumes:
+	docker volume create --name=grafana-volume
 
 dev: build
 	docker-compose up -d postgres rabbitmq graphite
