@@ -20,8 +20,8 @@ type Temperature struct {
 }
 
 // NewTemperature constructor
-func NewTemperature(temperature float32, temperatureScale enums.TemperatureScale) *Temperature {
-	return &Temperature{Temperature: temperature, TemperatureScale: temperatureScale}
+func NewTemperature() *Temperature {
+	return &Temperature{Temperature: 0, TemperatureScale: enums.CelsiusTemperaureScale}
 }
 
 // ToJSON marshal

@@ -13,11 +13,11 @@ type TemperatureSuite struct {
 }
 
 func (suite *TemperatureSuite) TestNewTemperature() {
-	suite.NotNil(NewTemperature(0, enums.CelsiusTemperaureScale))
+	suite.NotNil(NewTemperature())
 }
 
 func (suite *TemperatureSuite) TestToJSON() {
-	temperature := NewTemperature(0, enums.CelsiusTemperaureScale)
+	temperature := NewTemperature()
 	json := temperature.ToJSON()
 
 	suite.Contains(json, "id")
@@ -34,10 +34,10 @@ func (suite *TemperatureSuite) TestToJSON() {
 	suite.Contains(json, "0")
 	suite.Contains(json, enums.CelsiusTemperaureScale)
 
-	temperature = NewTemperature(0, enums.KelvinTemperaureScale)
+	temperature.TemperatureScale = enums.KelvinTemperaureScale
 	suite.Contains(temperature.ToJSON(), enums.KelvinTemperaureScale)
 
-	temperature = NewTemperature(0, enums.FahrenheitTemperaureScale)
+	temperature.TemperatureScale = enums.FahrenheitTemperaureScale
 	suite.Contains(temperature.ToJSON(), enums.FahrenheitTemperaureScale)
 }
 
