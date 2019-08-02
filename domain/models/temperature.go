@@ -2,6 +2,7 @@ package models
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 
 	"github.com/krakenlab/ternary"
@@ -31,6 +32,16 @@ func (temperature *Temperature) ToJSON() string {
 	data, err := json.Marshal(temperature)
 	ternary.Func(err == nil, func() {}, func() { panic(err) })()
 	return string(data)
+}
+
+// MetricValue to store in MetricRepository
+func (temperature *Temperature) MetricValue() string {
+	return fmt.Sprintf("%f", temperature.Temperature)
+}
+
+// MetricTag to store in MetricRepository
+func (temperature *Temperature) MetricTag() string {
+	return fmt.Sprintf("temperature.%s.%s", temperature.TemperatureScale, temperature.RecordedBy)
 }
 
 // Valid model

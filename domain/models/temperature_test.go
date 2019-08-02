@@ -42,6 +42,26 @@ func (suite *TemperatureSuite) TestToJSON() {
 	suite.Contains(temperature.ToJSON(), enums.FahrenheitTemperaureScale)
 }
 
+func (suite *TemperatureSuite) TestMatricTag() {
+	temperature := NewTemperature()
+
+	temperature.RecordedAt = time.Now().Add(time.Hour)
+	temperature.RecordedBy = "beacon"
+	temperature.Temperature = 15
+
+	suite.Equal("temperature.C.beacon", temperature.MetricTag())
+}
+
+func (suite *TemperatureSuite) TestMetricValue() {
+	temperature := NewTemperature()
+
+	temperature.RecordedAt = time.Now().Add(time.Hour)
+	temperature.RecordedBy = "beacon"
+	temperature.Temperature = 15.05
+
+	suite.Equal("15.050000", temperature.MetricValue())
+}
+
 func (suite *TemperatureSuite) TestValid() {
 	temperature := NewTemperature()
 

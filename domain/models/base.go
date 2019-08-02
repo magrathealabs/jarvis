@@ -2,6 +2,7 @@ package models
 
 import (
 	"encoding/json"
+	"strings"
 	"time"
 
 	"github.com/krakenlab/ternary"
@@ -43,4 +44,13 @@ func (base *Base) ToJSON() string {
 	data, err := json.Marshal(base)
 	ternary.Func(err == nil, func() {}, func() { panic(err) })()
 	return string(data)
+}
+
+func (base *Base) clearMetricTag(tag string) string {
+	tag = strings.Replace(tag, "/", "_", -1)
+	tag = strings.TrimPrefix(tag, "_")
+	tag = strings.TrimSuffix(tag, "_")
+	tag = ternary.String(tag == "", "root", tag)
+
+	return tag
 }
