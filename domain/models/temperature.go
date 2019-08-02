@@ -2,11 +2,11 @@ package models
 
 import (
 	"encoding/json"
-	"errors"
 	"time"
 
 	"github.com/krakenlab/ternary"
 	"github.com/magrathealabs/jarvis/domain/enums"
+	"github.com/magrathealabs/jarvis/domain/exceptions"
 	"github.com/magrathealabs/jarvis/domain/validators"
 )
 
@@ -48,7 +48,7 @@ func (temperature *Temperature) verifyRecordedAt() {
 	recordedAtValidator := validators.NewTimeValidator(temperature.RecordedAt)
 
 	if recordedAtValidator.InTheFuture() {
-		temperature.AppendError(errors.New("recorded_in may not be in the future"))
+		temperature.AppendError(exceptions.ErrorRecordedInMeyNotBeInTheFuture)
 	}
 }
 
@@ -56,7 +56,7 @@ func (temperature *Temperature) verifyTemperatureScale() {
 	temperatureScaleValidator := validators.NewTemperatureScaleValidator(temperature.TemperatureScale)
 
 	if temperatureScaleValidator.InvalidEnum() {
-		temperature.AppendError(errors.New("temperature scale must be C|F|K"))
+		temperature.AppendError(exceptions.ErrorTemperatureScaleMstBeCFK)
 	}
 }
 
@@ -64,7 +64,7 @@ func (temperature *Temperature) verifyTemperature() {
 	temperatureValidator := validators.NewFloat32Validator(temperature.Temperature)
 
 	if !temperatureValidator.InBetween(-1000, 1000) {
-		temperature.AppendError(errors.New("unfortunately we haven't met temperatures from other planets yet"))
+		temperature.AppendError(exceptions.ErrorUnfortunatelyWeHeventMetTemperaturesFromOtherPlanetsYet)
 	}
 }
 
@@ -72,7 +72,7 @@ func (temperature *Temperature) verifyRelativeHumidity() {
 	relativeHumidityValidator := validators.NewFloat32Validator(temperature.RelativeHumidity)
 
 	if !relativeHumidityValidator.InBetween(0, 1) {
-		temperature.AppendError(errors.New("percentage must be between 0 and 1"))
+		temperature.AppendError(exceptions.ErrorPercentageMustBeBetween0and1)
 	}
 }
 
@@ -80,6 +80,6 @@ func (temperature *Temperature) verifyRecordedBy() {
 	recordedByValidator := validators.NewStringValidator(temperature.RecordedBy)
 
 	if recordedByValidator.Nil() {
-		temperature.AppendError(errors.New("recorded_by needs to be present"))
+		temperature.AppendError(exceptions.ErrorRecordedByNeedsToBePresent)
 	}
 }
