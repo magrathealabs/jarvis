@@ -1,0 +1,106 @@
+_type: export
+__export_format: 4
+__export_date: 2019-08-06T14:40:52.307Z
+__export_source: insomnia.desktop.app:v6.5.4
+resources:
+  - _id: req_6e996e2595d74efe952c9cf491575660
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "recorded_at": "2019-08-06T11:15:00Z",
+          "recorded_by": "onion",
+          "temperature": 32,
+          "temperature_scale": "C",
+        	"relative_humidity": 0.5
+        }
+    created: 1565101251227
+    description: ""
+    headers:
+      - id: pair_a8d2cced176b47118075e6c2ea5cbdc2
+        name: Content-Type
+        value: application/json
+    isPrivate: false
+    metaSortKey: -1565101251227
+    method: POST
+    modified: 1565102167889
+    name: POST
+    parameters: []
+    parentId: fld_904ae18d269c4a5ebb3ef2fc8f7f468d
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: "{{jarvis}}/api/v1/temperature"
+    _type: request
+  - _id: fld_904ae18d269c4a5ebb3ef2fc8f7f468d
+    created: 1565101236242
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1565101236242
+    modified: 1565101236242
+    name: temperature
+    parentId: fld_2b4ba3bc8b7e4a3ead065d95597879f6
+    _type: request_group
+  - _id: fld_2b4ba3bc8b7e4a3ead065d95597879f6
+    created: 1565101219976
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1565101219976
+    modified: 1565101219976
+    name: v1
+    parentId: fld_cf045976d2c74070a4c28af7b125dd02
+    _type: request_group
+  - _id: fld_cf045976d2c74070a4c28af7b125dd02
+    created: 1565101215405
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1565101215405
+    modified: 1565101215405
+    name: api
+    parentId: wrk_b7b27496537e4318a5bf55642e54c776
+    _type: request_group
+  - _id: wrk_b7b27496537e4318a5bf55642e54c776
+    created: 1565101088613
+    description: ""
+    modified: 1565101088613
+    name: Jarvis
+    parentId: null
+    _type: workspace
+  - _id: env_4bc6e1a970469c8de5b6e84374eea7aa161b37fb
+    color: null
+    created: 1565101088688
+    data: {}
+    dataPropertyOrder: null
+    isPrivate: false
+    metaSortKey: 1565101088689
+    modified: 1565101088688
+    name: Base Environment
+    parentId: wrk_b7b27496537e4318a5bf55642e54c776
+    _type: environment
+  - _id: jar_4bc6e1a970469c8de5b6e84374eea7aa161b37fb
+    cookies: []
+    created: 1565101088697
+    modified: 1565101088697
+    name: Default Jar
+    parentId: wrk_b7b27496537e4318a5bf55642e54c776
+    _type: cookie_jar
+  - _id: env_0806991288724a228eab451a181bc1b9
+    color: "#00ff15"
+    created: 1565101124601
+    data:
+      jarvis: localhost:3000
+    dataPropertyOrder:
+      "&":
+        - jarvis
+    isPrivate: false
+    metaSortKey: 1565101124601
+    modified: 1565101200795
+    name: Dev
+    parentId: env_4bc6e1a970469c8de5b6e84374eea7aa161b37fb
+    _type: environment

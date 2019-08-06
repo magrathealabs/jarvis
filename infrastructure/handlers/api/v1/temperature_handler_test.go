@@ -1,10 +1,15 @@
 package v1
 
 import (
+	"bytes"
+	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	"strings"
 	"testing"
+	"time"
+
+	"github.com/magrathealabs/jarvis/domain/enums"
+	"github.com/magrathealabs/jarvis/domain/services/forms"
 
 	"github.com/gin-gonic/gin"
 	"github.com/krakenlab/gspec"
@@ -19,27 +24,36 @@ type TemperatureHandlerSuite struct {
 	Recorder *httptest.ResponseRecorder
 }
 
-func (suite *TemperatureHandlerSuite) SetupTest() {
+func (suite *TemperatureHandlerSuite) TestNewTemperatureHandler() {
 	suite.Engine = gin.Default()
-	suite.Recorder = httptest.NewRecorder()
 
 	NewTemperatureHandler(datastore.NewMetricRepositoryFromEnv()).SetupRoutes(suite.Engine)
-}
 
-func (suite *TemperatureHandlerSuite) TestNewTemperatureHandler() {
 	suite.NotNil(NewTemperatureHandler(datastore.NewMetricRepositoryFromEnv()))
 }
 
-func (suite *TemperatureHandlerSuite) TestSetupRoutes() {
-	suite.Equal(1, len(suite.Engine.Routes()))
-}
-
 func (suite *TemperatureHandlerSuite) TestIndex() {
-	request, err := http.NewRequest(http.MethodGet, routes.APIV1Temperature, strings.NewReader(""))
+	form := forms.NewStoresTemperature()
+	form.RecordedAt = time.Now()
+	form.RecordedBy = "beacon"
+	form.Temperature = 45
+	form.TemperatureScale = enums.CelsiusTemperaureScale
+
+	data, marshalErr := json.Marshal(form)
+	suite.NoError(marshalErr)
+
+	suite.Engine = gin.Default()
+
+	NewTemperatureHandler(datastore.NewMetricRepositoryFromEnv()).SetupRoutes(suite.Engine)
+	recorder := httptest.NewRecorder()
+
+	request, err := http.NewRequest(http.MethodPost, routes.APIV1Temperature, bytes.NewReader(data))
 	suite.NoError(err)
 
-	suite.Engine.ServeHTTP(suite.Recorder, request)
-	suite.Equal(http.StatusOK, suite.Recorder.Code)
+	request.Header.Set("Content-Type", "application/json")
+
+	suite.Engine.ServeHTTP(recorder, request)
+	suite.Equal(http.StatusOK, recorder.Code)
 }
 
 func TestTemperatureHandlerSuite(t *testing.T) {

@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/krakenlab/gspec"
@@ -12,6 +13,15 @@ type BaseSuite struct {
 
 func (suite *BaseSuite) TestNewBase() {
 	suite.NotNil(NewBase())
+}
+
+func (suite *BaseSuite) TestValid() {
+	base := NewBase()
+
+	suite.True(base.Valid())
+
+	base.AppendError(errors.New("testing"))
+	suite.False(base.Valid())
 }
 
 func (suite *BaseSuite) TestToJSON() {
