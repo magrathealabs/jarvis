@@ -1,5 +1,8 @@
 language: go
 
+notifications:
+  slack: magrathealabs:oHaAKvF4iCobEeN5IFcQep5V
+
 services:
   - docker
 
