@@ -32,7 +32,7 @@ def branch
 end
 
 def tag(service)
-    "#{remove_prefix(service)}-#{dated}"
+    "#{remove_prefix(service)}-#{dated}".gsub('-', '.').gsub('/', '.').gsub('_', '.')
 end
 
 services.each do |service|
