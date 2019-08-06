@@ -27,8 +27,23 @@ def dated
     [branch, now.year, now.month, now.day, now.hour, now.min].join('.')
 end
 
-def branch
+
+def travis_pr?
+    ENV['TRAVIS_PULL_REQUEST'] != 'false'
+end
+
+def pr_name
+    ENV['TRAVIS_PULL_REQUEST_BRANCH'] || 'unstable'
+end
+
+def branch_name
     ENV['TRAVIS_BRANCH'] || 'unstable'
+end
+
+def branch
+    return pr_name if travis_pr?
+
+    branch_name
 end
 
 def tag(service)
