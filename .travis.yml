@@ -9,9 +9,6 @@ env:
 go:
   - "1.12"
 
-before_script:
-  - make travis
-
 before_install:
   # Docker Compose
   - sudo rm /usr/local/bin/docker-compose
@@ -24,6 +21,9 @@ before_install:
   - go get github.com/go-playground/overalls
   - go get github.com/mattn/goveralls
   - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
+
+before_script:
+  - make travis
 
 script:
   - overalls -project=github.com/magrathealabs/jarvis -covermode=count
