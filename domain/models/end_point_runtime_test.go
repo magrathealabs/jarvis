@@ -15,8 +15,8 @@ func (suite *EndpointRuntimeSuite) TestNewEndpointRuntime() {
 }
 
 func (suite *EndpointRuntimeSuite) TestToJSON() {
-	EndpointRuntime := NewEndpointRuntime(0, "testing")
-	json := EndpointRuntime.ToJSON()
+	endpointRuntime := NewEndpointRuntime(0, "testing")
+	json := endpointRuntime.ToJSON()
 
 	suite.Contains(json, "id")
 	suite.Contains(json, "created_at")
@@ -31,16 +31,16 @@ func (suite *EndpointRuntimeSuite) TestToJSON() {
 }
 
 func (suite *EndpointRuntimeSuite) TestMetricValue() {
-	EndpointRuntime := NewEndpointRuntime(0, "/route/api/testing")
-	suite.Equal("0", EndpointRuntime.MetricValue())
+	endpointRuntime := NewEndpointRuntime(0, "/route/api/testing")
+	suite.Equal("0", endpointRuntime.MetricValue())
 }
 
 func (suite *EndpointRuntimeSuite) TestMetricTag() {
-	EndpointRuntime := NewEndpointRuntime(0, "/route/api/testing/")
-	suite.Equal("end_point_runtime.route_api_testing", EndpointRuntime.MetricTag())
+	endpointRuntime := NewEndpointRuntime(0, "/route/api/testing/")
+	suite.Equal("end_point_runtime.route_api_testing", endpointRuntime.MetricTag())
 
-	EndpointRuntime = NewEndpointRuntime(0, "/")
-	suite.Equal("end_point_runtime.root", EndpointRuntime.MetricTag())
+	endpointRuntime = NewEndpointRuntime(0, "/")
+	suite.Equal("end_point_runtime.root", endpointRuntime.MetricTag())
 
 }
 

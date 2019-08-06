@@ -1,6 +1,8 @@
 package datastore
 
 import (
+	"time"
+
 	"github.com/krakenlab/ternary"
 	"github.com/magrathealabs/jarvis/domain/repositories"
 	"github.com/magrathealabs/jarvis/libs/env"
@@ -28,5 +30,11 @@ func NewMetricRepositoryFromEnv() repositories.MetricRepository {
 
 // InsertMetric into graphite
 func (repository *MetricRepository) InsertMetric(tag string, value string) error {
-	return repository.conn.SimpleSend(tag, value)
+	return repository.InsertMetricAt(tag, value, time.Now())
+}
+
+// InsertMetricAt custom time into graphite
+func (repository *MetricRepository) InsertMetricAt(tag string, value string, at time.Time) error {
+	metric := graphite.NewMetric(tag, value, at.UTC().Unix())
+	return repository.conn.SendMetric(metric)
 }

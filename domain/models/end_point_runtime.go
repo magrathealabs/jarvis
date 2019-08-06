@@ -3,7 +3,6 @@ package models
 import (
 	"encoding/json"
 	"fmt"
-	"strings"
 
 	"github.com/krakenlab/ternary"
 )
@@ -22,23 +21,18 @@ func NewEndpointRuntime(value int64, route string) *EndpointRuntime {
 }
 
 // ToJSON marshal
-func (EndpointRuntime *EndpointRuntime) ToJSON() string {
-	data, err := json.Marshal(EndpointRuntime)
+func (endpointRuntime *EndpointRuntime) ToJSON() string {
+	data, err := json.Marshal(endpointRuntime)
 	ternary.Func(err == nil, func() {}, func() { panic(err) })()
 	return string(data)
 }
 
 // MetricValue transformation
-func (EndpointRuntime *EndpointRuntime) MetricValue() string {
-	return fmt.Sprintf("%d", EndpointRuntime.Value)
+func (endpointRuntime *EndpointRuntime) MetricValue() string {
+	return fmt.Sprintf("%d", endpointRuntime.Value)
 }
 
 // MetricTag route transformation
-func (EndpointRuntime *EndpointRuntime) MetricTag() string {
-	metricRoute := strings.Replace(EndpointRuntime.Route, "/", "_", -1)
-	metricRoute = strings.TrimPrefix(metricRoute, "_")
-	metricRoute = strings.TrimSuffix(metricRoute, "_")
-	metricRoute = ternary.String(metricRoute == "", "root", metricRoute)
-
-	return fmt.Sprintf("end_point_runtime.%s", metricRoute)
+func (endpointRuntime *EndpointRuntime) MetricTag() string {
+	return fmt.Sprintf("end_point_runtime.%s", endpointRuntime.clearMetricTag(endpointRuntime.Route))
 }

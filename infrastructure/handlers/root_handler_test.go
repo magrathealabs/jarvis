@@ -1,15 +1,12 @@
 package handlers
 
 import (
-	"net/http"
 	"net/http/httptest"
-	"strings"
 	"testing"
 
 	"github.com/gin-gonic/gin"
 	"github.com/krakenlab/gspec"
 	"github.com/magrathealabs/jarvis/infrastructure/datastore"
-	"github.com/magrathealabs/jarvis/infrastructure/routes"
 )
 
 type RootHandlerSuite struct {
@@ -28,14 +25,6 @@ func (suite *RootHandlerSuite) SetupTest() {
 
 func (suite *RootHandlerSuite) TestNewRootHandler() {
 	suite.NotNil(NewRootHandler(datastore.NewMetricRepositoryFromEnv()))
-}
-
-func (suite *RootHandlerSuite) TestIndex() {
-	request, err := http.NewRequest(http.MethodGet, routes.Root, strings.NewReader(""))
-	suite.NoError(err)
-
-	suite.Engine.ServeHTTP(suite.Recorder, request)
-	suite.Equal(http.StatusOK, suite.Recorder.Code)
 }
 
 func TestRootHandlerSuite(t *testing.T) {
