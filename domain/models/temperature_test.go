@@ -42,24 +42,44 @@ func (suite *TemperatureSuite) TestToJSON() {
 	suite.Contains(temperature.ToJSON(), enums.FahrenheitTemperaureScale)
 }
 
-func (suite *TemperatureSuite) TestMatricTag() {
+func (suite *TemperatureSuite) TestTemperatureMetricTag() {
 	temperature := NewTemperature()
 
 	temperature.RecordedAt = time.Now().Add(time.Hour)
 	temperature.RecordedBy = "beacon"
 	temperature.Temperature = 15
 
-	suite.Equal("temperature.C.beacon", temperature.MetricTag())
+	suite.Equal("temperature.C.beacon", temperature.TemperatureMetricTag())
 }
 
-func (suite *TemperatureSuite) TestMetricValue() {
+func (suite *TemperatureSuite) TestRelativeHumidityMetricTag() {
+	temperature := NewTemperature()
+
+	temperature.RecordedAt = time.Now().Add(time.Hour)
+	temperature.RecordedBy = "beacon"
+	temperature.Temperature = 15
+
+	suite.Equal("relative_humidity.beacon", temperature.RelativeHumidityMetricTag())
+}
+
+func (suite *TemperatureSuite) TestTemperatureMetricValue() {
 	temperature := NewTemperature()
 
 	temperature.RecordedAt = time.Now().Add(time.Hour)
 	temperature.RecordedBy = "beacon"
 	temperature.Temperature = 15.05
 
-	suite.Equal("15.050000", temperature.MetricValue())
+	suite.Equal("15.050000", temperature.TemperatureMetricValue())
+}
+
+func (suite *TemperatureSuite) TestRelativeHumidityMetricValue() {
+	temperature := NewTemperature()
+
+	temperature.RecordedAt = time.Now().Add(time.Hour)
+	temperature.RecordedBy = "beacon"
+	temperature.RelativeHumidity = 0.05
+
+	suite.Equal("0.050000", temperature.RelativeHumidityMetricValue())
 }
 
 func (suite *TemperatureSuite) TestValid() {

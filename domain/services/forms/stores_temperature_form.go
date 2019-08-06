@@ -13,6 +13,7 @@ type StoresTemperatureForm struct {
 	RecordedAt       time.Time              `json:"recorded_at"`
 	RecordedBy       string                 `json:"recorded_by"`
 	Temperature      float32                `json:"temperature"`
+	RelativeHumidity float32                `json:"relative_humidity"`
 	TemperatureScale enums.TemperatureScale `json:"temperature_scale"`
 }
 
@@ -29,6 +30,7 @@ func (form *StoresTemperatureForm) BuildTemperature() *models.Temperature {
 	temperature.RecordedBy = form.RecordedBy
 	temperature.Temperature = form.Temperature
 	temperature.TemperatureScale = form.TemperatureScale
+	temperature.RelativeHumidity = form.RelativeHumidity
 
 	return temperature
 }

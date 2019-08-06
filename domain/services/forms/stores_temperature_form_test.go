@@ -23,6 +23,7 @@ func (suite *StoresTemperatureFormSuite) TestBuildTemperature() {
 	form.RecordedAt = time.Now()
 	form.Temperature = -5
 	form.TemperatureScale = enums.CelsiusTemperaureScale
+	form.RelativeHumidity = 0.5
 
 	temperature := form.BuildTemperature()
 
@@ -30,6 +31,7 @@ func (suite *StoresTemperatureFormSuite) TestBuildTemperature() {
 	suite.Equal(form.RecordedAt, temperature.RecordedAt)
 	suite.Equal(form.Temperature, temperature.Temperature)
 	suite.Equal(form.TemperatureScale, temperature.TemperatureScale)
+	suite.Equal(form.RelativeHumidity, temperature.RelativeHumidity)
 }
 
 func TestStoresTemperatureFormSuite(t *testing.T) {

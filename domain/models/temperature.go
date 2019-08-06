@@ -34,14 +34,24 @@ func (temperature *Temperature) ToJSON() string {
 	return string(data)
 }
 
-// MetricValue to store in MetricRepository
-func (temperature *Temperature) MetricValue() string {
+// TemperatureMetricValue to store in MetricRepository
+func (temperature *Temperature) TemperatureMetricValue() string {
 	return fmt.Sprintf("%f", temperature.Temperature)
 }
 
-// MetricTag to store in MetricRepository
-func (temperature *Temperature) MetricTag() string {
+// RelativeHumidityMetricValue to store in MetricRepository
+func (temperature *Temperature) RelativeHumidityMetricValue() string {
+	return fmt.Sprintf("%f", temperature.RelativeHumidity)
+}
+
+// TemperatureMetricTag to store in MetricRepository
+func (temperature *Temperature) TemperatureMetricTag() string {
 	return fmt.Sprintf("temperature.%s.%s", temperature.TemperatureScale, temperature.RecordedBy)
+}
+
+// RelativeHumidityMetricTag to store in MetricRepository
+func (temperature *Temperature) RelativeHumidityMetricTag() string {
+	return fmt.Sprintf("relative_humidity.%s", temperature.RecordedBy)
 }
 
 // Valid model

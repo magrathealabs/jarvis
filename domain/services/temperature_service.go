@@ -23,16 +23,28 @@ func (service *TemperatureService) StoresTemperature(form *forms.StoresTemperatu
 
 	response.Temperature = form.BuildTemperature()
 	if response.Temperature.Valid() {
-		response.Stored = service.insertTemperature(response.Temperature)
+		response.Stored = service.insertTemperatureAndRelativeHumidity(response.Temperature)
 	}
 
 	return response
 }
 
+func (service *TemperatureService) insertTemperatureAndRelativeHumidity(temperature *models.Temperature) bool {
+	return service.insertTemperature(temperature) && service.insertRelativeHumidity(temperature)
+}
+
 func (service *TemperatureService) insertTemperature(temperature *models.Temperature) bool {
 	return service.MetricRepository.InsertMetricAt(
-		temperature.MetricTag(),
-		temperature.MetricValue(),
+		temperature.TemperatureMetricTag(),
+		temperature.TemperatureMetricValue(),
+		temperature.RecordedAt,
+	) == nil
+}
+
+func (service *TemperatureService) insertRelativeHumidity(temperature *models.Temperature) bool {
+	return service.MetricRepository.InsertMetricAt(
+		temperature.RelativeHumidityMetricTag(),
+		temperature.RelativeHumidityMetricValue(),
 		temperature.RecordedAt,
 	) == nil
 }
