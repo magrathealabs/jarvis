@@ -37,8 +37,5 @@ func (handler *TemperatureHandler) Create(c *gin.Context) {
 	if c.BindJSON(form) == nil {
 		service := services.NewTemperatureService(handler.MetricRepository)
 		c.JSON(http.StatusOK, service.StoresTemperature(form))
-		return
 	}
-
-	c.JSON(http.StatusInternalServerError, form)
 }
