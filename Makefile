@@ -22,7 +22,10 @@ migrate:
 	docker-compose exec postgres psql -U postgres -c "create database development"
 	docker-compose exec postgres psql -U postgres -c "create database production"
 
-travis: stop_default_services dev migrate
+registry:
+	ruby registry.rb
+
+travis: stop_default_services dev migrate registry
 
 stop_default_services:
 	# Disable services enabled by default
