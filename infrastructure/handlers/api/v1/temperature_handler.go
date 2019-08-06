@@ -3,6 +3,10 @@ package v1
 import (
 	"net/http"
 
+	"github.com/magrathealabs/jarvis/domain/services"
+
+	"github.com/magrathealabs/jarvis/domain/services/forms"
+
 	"github.com/gin-gonic/gin"
 	"github.com/magrathealabs/jarvis/domain/repositories"
 	"github.com/magrathealabs/jarvis/infrastructure/routes"
@@ -23,10 +27,18 @@ func NewTemperatureHandler(metricRepository repositories.MetricRepository) handl
 
 // SetupRoutes on gin
 func (handler *TemperatureHandler) SetupRoutes(engine *gin.Engine) {
-	engine.GET(routes.APIV1Temperature, handler.Index)
+	engine.POST(routes.APIV1Temperature, handler.Create)
 }
 
-// Index over /api/v1/temperature path
-func (handler *TemperatureHandler) Index(c *gin.Context) {
-	c.String(http.StatusOK, "OK!")
+// Create over /api/v1/temperature path (Post)
+func (handler *TemperatureHandler) Create(c *gin.Context) {
+	form := forms.NewStoresTemperature()
+
+	if c.BindJSON(form) == nil {
+		service := services.NewTemperatureService(handler.MetricRepository)
+		c.JSON(http.StatusOK, service.StoresTemperature(form))
+		return
+	}
+
+	c.JSON(http.StatusInternalServerError, form)
 }
