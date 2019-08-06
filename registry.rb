@@ -36,6 +36,6 @@ def tag(service)
 end
 
 services.each do |service|
-   `docker tag #{service} #{dockerhub_repository}:#{tag(service)}`
-   `docker push #{dockerhub_repository}:#{tag(service)}`
+   system "docker tag #{service} #{dockerhub_repository}:#{tag(service)}"
+   system "docker push #{dockerhub_repository}:#{tag(service)}"
 end
