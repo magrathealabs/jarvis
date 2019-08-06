@@ -1,5 +1,6 @@
 services = %w[
     jarvis_jarvis
+    jarvis_rabbitmq
 ]
 
 def now
@@ -23,7 +24,7 @@ def remove_prefix(service)
 end
 
 def dated
-    [branch, now.year, now.month, now.day, now.hour, now.hour, now.min].join('.')
+    [branch, now.year, now.month, now.day, now.hour, now.min].join('.')
 end
 
 def branch
@@ -35,6 +36,6 @@ def tag(service)
 end
 
 services.each do |service|
-   system("docker tag #{service} #{dockerhub_repository}:#{tag(service)}")
-   system("docker push #{dockerhub_repository}:#{tag(service)}")
+   `docker tag #{service} #{dockerhub_repository}:#{tag(service)}`
+   `docker push #{dockerhub_repository}:#{tag(service)}`
 end
